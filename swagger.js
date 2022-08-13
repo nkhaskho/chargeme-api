@@ -1,7 +1,7 @@
 const swaggerAutogen = require('swagger-autogen')()
 
 const outputFile = './swagger_output.json'
-const endpointsFiles = ["./routes/users.js"]
+const endpointsFiles = ["./routes/users.js", "./routes/stations.js"]
 
 const doc = {
     info: {
@@ -10,7 +10,7 @@ const doc = {
         description: "The <b>ChergeMe</b> API Documentation."
     },
     schemes: ['http'],
-    host: `localhost:3300`,
+    host: `localhost:3000`,
     basePath: "/api",
 }
 
