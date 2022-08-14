@@ -3,6 +3,7 @@ const express = require('express')
 const connection = require("./config/db")
 const users = require('./routes/users')
 const stations = require('./routes/stations')
+const reviews = require('./routes/reviews')
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger_output.json');
 
@@ -18,7 +19,7 @@ app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(express.json());
 
-app.use("/api", [users, stations]);
+app.use("/api", [users, stations,reviews]);
 
 app.get('/', (req, res) => {
   res.json({ test: 'Hello Naiim!'})
