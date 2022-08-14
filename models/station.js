@@ -1,6 +1,7 @@
 // required imports
 const mongoose = require('mongoose')
 const Joi = require('joi')
+Joi.objectId = require('joi-objectid')(Joi)
 
 // create schema
 const stationSchema = mongoose.Schema({
@@ -20,6 +21,11 @@ const stationSchema = mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    
+    owner : { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'User' 
+    }
 
     // TODO: address (longitude, latitude)
 
@@ -30,7 +36,8 @@ const Station = mongoose.model('Station', stationSchema)
 const validate = (station) => {
     const schema = Joi.object({
         name: Joi.string().required(),
-        status: Joi.string().required()
+        status: Joi.string().required(),
+        owner: Joi.objectId().required()
     });
     return schema.validate(station);
 };
