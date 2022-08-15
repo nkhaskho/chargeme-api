@@ -43,7 +43,7 @@ router.delete("/reviews/:id", async (req, res) => {
 })
 
 // Updatereview by id
-router.put("reviews/:id", (req, res) => {
+router.put("/reviews/:id", (req, res) => {
     // #swagger.tags = ['reviews']
     Review.findByIdAndUpdate(req.params.id, req.body, (err,review) => {
         if (err) res.status(404).send({error: `Review with id "${req.params.id} not found!"`})

@@ -44,7 +44,7 @@ router.delete("/chargepoints/:id", async (req, res) => {
 
 // Update chargepoint by id
 // a voir
-router.put("chargepoints/:id", (req, res) => {
+router.put("/chargepoints/:id", (req, res) => {
     // #swagger.tags = ['chargepoints']
     Chargepoint.findByIdAndUpdate(req.params.id, req.body, (err, chargepoint) => {
         if (err) {
