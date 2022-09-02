@@ -1,5 +1,6 @@
 
 const express = require('express')
+const cors = require('cors')
 const connection = require("./config/db")
 const users = require('./routes/users')
 const stations = require('./routes/stations')
@@ -17,6 +18,8 @@ const app = express()
 
 // connect to database
 connection();
+
+app.use(cors())
 
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
