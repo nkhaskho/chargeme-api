@@ -6,51 +6,58 @@ const { string, required } = require('joi')
 Joi.objectId = require('joi-objectid')(Joi)
 
 // create schema
-const reservationSchema = mongoose.Schema({
+const ReservationSchema = mongoose.Schema({
 
-
-    dateres: {
+    date: {
         //date doit etre > createdat
         type: Date ,
         required: true
     },
+
     createdAt: {
         type: Date,
         default: Date.now()
     },
+
     device: {
         type: String,
         required: true
     },
+
     duration: {
         type: Number,
         required: true
     },
+
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User', 
         required: true
     },
-    chargepoint:{
+
+    chargePoint:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Chargepoint', 
+        ref: 'ChargePoint', 
         required: true
     }
 
 })
-const Reservation=mongoose.model('Reservation',reservationSchema)
+
+
+const Reservation = mongoose.model('Reservation', ReservationSchema)
+
+
 //validaion
 const validate = (reservation) => {
     const schema = Joi.object({
         device: Joi.string().required(),
         duration: Joi.number().required(),
-        dateres: Joi.date().required(),
+        date: Joi.date().required(),
         user: Joi.objectId().required(),
-        chargepoint: Joi.objectId().required()
-
+        chargePoint: Joi.objectId().required()
     });
     return schema.validate(reservation);
 };
 
 
-module.exports = {Reservation, validate}
+module.exports = { Reservation, validate }

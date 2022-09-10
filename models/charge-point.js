@@ -6,6 +6,12 @@ Joi.objectId = require('joi-objectid')(Joi)
 // create schema
 const chargepointSchema = mongoose.Schema({
 
+    category: {
+        type: String,
+        enum: ['mobile', 'car', 'laptop'],
+        required: true
+    },
+    
     type: {
         type: String,
         required: true
@@ -42,9 +48,10 @@ const chargepointSchema = mongoose.Schema({
     }
 
 })
+
 const ChargePoint = mongoose.model('ChargePoint', chargepointSchema)
 
-//validaion
+// validaion
 const validate = (chargePoint) => {
     const schema = Joi.object({
         type: Joi.string().required(),
