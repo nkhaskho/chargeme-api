@@ -1,5 +1,6 @@
 
 const { User, validate } = require("../models/user");
+const { isAdmin } = require("../middlewares/auth");
 const express = require("express");
 const bcrypt = require("bcrypt");
 
@@ -17,13 +18,6 @@ router.get("/users", async (req, res) => {
     if (req.query.search) query.fullName = { $regex: req.query.search, $options: "i" }
     if (req.query.governorate) query.governorate = req.query.governorate;
 	const users = await User.find(query);
-
-    //users.forEach(user => delete user.password)
-    /*
-    for (let index = 0; index < users.length; index++) {
-        users[index].password = "";
-    }
-    */
 	res.send(users);
 })
 
@@ -90,7 +84,7 @@ router.put("/users/:id", async (req, res) => {
 })
 
 // Delete existing user
-router.delete("/users/:id", async (req, res) => {
+router.delete("/users/:id", isAdmin ,async (req, res) => {
     // #swagger.tags = ['users']
     // #swagger.description = 'Delete user by id.'
     User.findByIdAndDelete({ _id: req.params.id }, (err, user) => {
