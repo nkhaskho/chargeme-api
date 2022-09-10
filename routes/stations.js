@@ -1,4 +1,5 @@
 const { Station, validate } = require("../models/station");
+const { isAuthenticated } = require("../middlewares/auth");
 const express = require("express");
 
 const router = express.Router();
@@ -11,11 +12,13 @@ router.get("/stations", async (req, res) => {
 })
 
 // Add new station
-router.post("/stations", async (req, res) => {
+router.post("/stations", isAuthenticated , async (req, res) => {
     // #swagger.tags = ['stations']
-    const { err } = validate(req.body)
+    const { err } = validate(req.body);
+    console.log(req.user);
     if (err) res.send({error: error.details[0].message}); //[0].message
     const station = new Station(req.body)
+    station.owner = req.user.id;
     await station.save()
     res.send(station)
 })
