@@ -6,45 +6,56 @@ Joi.objectId = require('joi-objectid')(Joi)
 // create schema
 const chargepointSchema = mongoose.Schema({
 
-
     type: {
         type: String,
         required: true
     },
+
     description: {
         type: String
     },
-    createdAt: {
-        type: Date,
-        default: Date.now()
-    },
+
     price: {
         type: Number,
         required: true
     },
+
     volt: {
         type: Number,
         required: true
     },
-    location: { 
+
+    station: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Station',
-        required:true
+        required: true
+    },
+
+    lng : { 
+        type: Number, 
+        required: true 
+    },
+
+    lat : { 
+        type: Number, 
+        required: true 
     }
 
 })
-const Chargepoint=mongoose.model('Chargepoint',chargepointSchema)
+const ChargePoint = mongoose.model('ChargePoint', chargepointSchema)
+
 //validaion
-const validate = (chargepoint) => {
+const validate = (chargePoint) => {
     const schema = Joi.object({
         type: Joi.string().required(),
         price: Joi.string().required(),
         volt: Joi.number().required(),
-        location: Joi.objectId().required()
-
+        station: Joi.objectId().required(),
+        lng: Joi.number().required(),
+        lat: Joi.number().required()
     });
-    return schema.validate(chargepoint);
+    return schema.validate(chargePoint);
 };
 
 
-module.exports = {Chargepoint, validate}
+module.exports = {ChargePoint, validate}

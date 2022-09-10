@@ -27,6 +27,7 @@ router.get("/stations/:id", (req, res) => {
         if (err) res.status(404).send({error: `Station with id "${req.params.id} not found!"`})
         res.send(station)
     })
+    //.populate('owner')
 })
 
 

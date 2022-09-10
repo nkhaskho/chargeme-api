@@ -26,9 +26,18 @@ const stationSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User',
         required:true 
-    }
+    },
 
     // TODO: address (longitude, latitude)
+    lng : { 
+        type: Number, 
+        required: true 
+    },
+
+    lat : { 
+        type: Number, 
+        required: true 
+    }
 
 })
 
@@ -38,7 +47,9 @@ const validate = (station) => {
     const schema = Joi.object({
         name: Joi.string().required(),
         status: Joi.string().required(),
-        owner: Joi.objectId().required()
+        owner: Joi.objectId().required(),
+        lng: Joi.number().required(),
+        lat: Joi.number().required()
     });
     return schema.validate(station);
 };
