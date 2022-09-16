@@ -1,5 +1,6 @@
 const { Reservation, validate } = require("../models/reservation");
 const express = require("express");
+const { isAuthenticated } = require("../middlewares/auth");
 
 const router = express.Router();
 
@@ -11,11 +12,12 @@ router.get("/reservations", async (req, res) => {
 })
 
 // Add new reservation
-router.post("/reservations", async (req, res) => {
+router.post("/reservations", isAuthenticated, async (req, res) => {
     // #swagger.tags = ['reservations']
     const { err } = validate(req.body)
     if (err) res.send({error: error.errors}); //[0].message
     const reservation = new Reservation(req.body)
+    reservation.client = req.user._id
     await reservation.save()
     res.send(reservation)
 })

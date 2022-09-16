@@ -37,19 +37,14 @@ router.post("/users", async (req, res) => {
         const { error } = validate(req.body);
         if (error) return res.status(400).send({error: error.details[0].message}); //[0].message
         User.find({username: req.body.username}, async (err, users) => {
-            if (err) {
-                res.status(500).send({error: err})
-            }
-            if (users.length>0) {
-                res.status(400).send({error: "username already exist"})
-            }
+            if (err) { res.status(500).send({error: err}) }
+            if (users.length>0) { res.status(400).send({error: "username already exist"}) }
             const user = new User(req.body);
             const salt = await bcrypt.genSalt(10);
             user.password = await bcrypt.hash(user.password, salt);
             await user.save();
             res.send(user);
         })
-        
     } catch (error) {
         res.status(500).send({error: "invalid request body"});
     }
@@ -59,13 +54,9 @@ router.post("/users", async (req, res) => {
 router.get("/users/:id", async (req, res) => {
 	// #swagger.tags = ['users']
     // #swagger.description = 'Get user by id.'
-    User.findById(req.params.id, (err, user) => {
-        if (err) {
-            res.status(404).send({error: "user not found"})
-        } else {
-            res.send(user);
-        }
-    });
+    await User.findById(req.params.id).exec()
+    .then(user => res.status(200).send(user))
+    .catch(err => res.status(404).send({error: "user not found"}))
 })
 
 // Update existing user

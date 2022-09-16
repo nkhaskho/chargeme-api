@@ -17,12 +17,13 @@ const userSchema = mongoose.Schema({
     username: {
         type: String,
         unique: true,
-        lowercase: true
+        required: true
     },
 
     email: {
         type: String,
-        lowercase: true
+        unique: true,
+        required: true
     },
 
     role: {
@@ -40,7 +41,7 @@ const userSchema = mongoose.Schema({
 
     phone: {
         type: Number,
-        required: [true, 'phone_required']
+        required: true
     }
 
 })

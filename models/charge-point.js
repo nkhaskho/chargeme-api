@@ -54,6 +54,7 @@ const ChargePoint = mongoose.model('ChargePoint', chargepointSchema)
 // validaion
 const validate = (chargePoint) => {
     const schema = Joi.object({
+        category: Joi.string().required(),
         type: Joi.string().required(),
         price: Joi.string().required(),
         volt: Joi.number().required(),

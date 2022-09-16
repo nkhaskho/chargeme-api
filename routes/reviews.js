@@ -13,7 +13,7 @@ router.get("/reviews", async (req, res) => {
 // Add new review
 router.post("/reviews", async (req, res) => {
     // #swagger.tags = ['reviews']
-    const { err } = validate(req.body)
+    const { err } = await validate(req.body)
     if (err) res.send({error: error.errors}); //[0].message
     const review = new Review(req.body)
     await review.save()

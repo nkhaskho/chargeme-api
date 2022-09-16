@@ -11,43 +11,48 @@ const reviewSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    
     description: {
         type: String,
         required: true
     },
+    
     createdAt: {
         type: Date,
         default: Date.now()
     },
+    
     note: {
         type: Number,min:0,max:5,
         required: true
     },
+    
     station: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Station', 
         required: true
     },
-    user: {
+
+    client: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User', 
         required: true
     }
 
 })
-const Review=mongoose.model('Review',reviewSchema)
+
+const Review = mongoose.model('Review', reviewSchema)
 
 const validate = (review) => {
     const schema = Joi.object({
         title: Joi.string().required(),
         description: Joi.string().required(),
         note: Joi.number().required(),
-        user: Joi.objectId().required(),
+        client: Joi.objectId().required(),
         station: Joi.objectId().required()
-
     });
     return schema.validate(review);
 };
 
 
-module.exports = {Review, validate}
+module.exports = { Review, validate }

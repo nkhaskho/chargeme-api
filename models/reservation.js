@@ -29,7 +29,7 @@ const ReservationSchema = mongoose.Schema({
         required: true
     },
 
-    user: {
+    client: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User', 
         required: true
@@ -53,7 +53,7 @@ const validate = (reservation) => {
         device: Joi.string().required(),
         duration: Joi.number().required(),
         date: Joi.date().required(),
-        user: Joi.objectId().required(),
+        client: Joi.objectId().allow(null),
         chargePoint: Joi.objectId().required()
     });
     return schema.validate(reservation);
