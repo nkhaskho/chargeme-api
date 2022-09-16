@@ -7,8 +7,8 @@ const router = express.Router();
 router.get("/chargepoints", async (req, res) => {
     // #swagger.tags = ['chargepoints']
     let filterOptions = {}
-    if (req.params.station) filterOptions['station'] = req.params.station
-    if (req.params.category) filterOptions['category'] = req.params.category
+    if (req.params.station) filterOptions.station = req.params.station
+    if (req.params.category) filterOptions.category = req.params.category
     await ChargePoint.find(filterOptions).exec()
     .then(chargePoints => res.status(200).send(chargePoints))
     .catch(error => res.status(400).send(error))

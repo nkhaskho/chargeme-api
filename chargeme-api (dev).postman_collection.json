@@ -1,0 +1,960 @@
+{
+	"info": {
+		"_postman_id": "b7c59890-cd74-4fa2-8b08-1735a569bdbb",
+		"name": "chargeme-api (dev)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Get all users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWMxYzU3YjVlOTU5OWNiY2IxMmE2ZTQiLCJyb2xlIjoiYWRtaW4iLCJmdWxsTmFtZSI6IlNlbWFoIEtoYXNraG91c3NpIiwiaWF0IjoxNjQwMTcxNjMwfQ.miya_RP9TmZSqBk_pK71XM0_00Dl_Tjy3IonjqQHJj4",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "governorate",
+									"value": "ben arous",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "khaskhoussi",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Salim Khaskho\",\n    \"username\": \"skhaskho\",\n    \"email\": \"skhaskho@gmail.com\",\n    \"role\": \"client\",\n    \"password\": \"pass1234\",\n    \"phone\": 55944780\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/6324f0b40e8733da5f1ad300",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"6324f0b40e8733da5f1ad300"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"_id\": \"62f52cf1ceef67f278b005b6\",\n        \"fullName\": \"Naiim Khaskhoussi\",\n        \"username\": \"nkhaskho\",\n        \"email\": \"nkhaskho@gmail.com\",\n        \"role\": \"owner\",\n        \"joinedAt\": \"2022-08-11T16:23:06.475Z\",\n        \"password\": \"$2b$10$mz5qEGoQsAcD.11DD0Apt.ZXSgIqs4BbHV7TuCBKB1ZugW9.WgxVS\",\n        \"phone\": 55944781,\n        \"__v\": 0\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/62f52cf1ceef67f278b005b6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"62f52cf1ceef67f278b005b6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGJmMzBkOWNiYzY1MGVmYzE1MTkxMSIsInJvbGUiOiJhZG1pbiIsInVzZXJuYW1lIjoiaGFuZW5lIiwiaWF0IjoxNjYyODQ5Nzg5LCJleHAiOjE2NjU0NDE3ODl9.55nzksYDLPJoL1JWktkL2pe5UgvMIlLGges28TnqBU8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"61b0baf9dc2358d11a94c1d1\",\n    \"userName\": \"n.khaskhoussi\",\n    \"fullName\": \"Naiim Khaskhoussi\",\n    \"email\": \"nkh@gmail.com\",\n    \"role\": \"AGENT\",\n    \"password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/62f52cf1ceef67f278b005b6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"62f52cf1ceef67f278b005b6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stations",
+			"item": [
+				{
+					"name": "Get all stations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWMxYzU3YjVlOTU5OWNiY2IxMmE2ZTQiLCJyb2xlIjoiYWRtaW4iLCJmdWxsTmFtZSI6IlNlbWFoIEtoYXNraG91c3NpIiwiaWF0IjoxNjQwMTcxNjMwfQ.miya_RP9TmZSqBk_pK71XM0_00Dl_Tjy3IonjqQHJj4",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/stations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"stations"
+							],
+							"query": [
+								{
+									"key": "governorate",
+									"value": "ben arous",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "khaskhoussi",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new station",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjRmMGI0MGU4NzMzZGE1ZjFhZDMwMCIsInJvbGUiOiJvd25lciIsInVzZXJuYW1lIjoibmtoYXNraG8iLCJpYXQiOjE2NjMzNjU5MTEsImV4cCI6MTY2NTk1NzkxMX0.F19c1azU3mMTy7HnLcCM4NIt-Ei0aNvTtZfvv3sFLwk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"SOuth Charging\",\n    \"status\": \"active\",\n    \"lng\": 36.845, \n    \"lat\": 10.199\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/stations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"stations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get station by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/stations/6324f386e7e3f9d32afb7759",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"stations",
+								"6324f386e7e3f9d32afb7759"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update station by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"62f6f17b769e48657abcf794\",\n    \"name\": \"station 1\",\n    \"status\": \"active\",\n    \"createdAt\": \"2022-08-13T00:33:58.179Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/stations/62f6f17b769e48657abcf794",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"stations",
+								"62f6f17b769e48657abcf794"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete station by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"61b0baf9dc2358d11a94c1d1\",\n    \"userName\": \"n.khaskhoussi\",\n    \"fullName\": \"Naiim Khaskhoussi\",\n    \"email\": \"nkh@gmail.com\",\n    \"role\": \"AGENT\",\n    \"password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/stations/6324f4620a920ca47a21dac6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"stations",
+								"6324f4620a920ca47a21dac6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chargepoints",
+			"item": [
+				{
+					"name": "Search chargepoints",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWMxYzU3YjVlOTU5OWNiY2IxMmE2ZTQiLCJyb2xlIjoiYWRtaW4iLCJmdWxsTmFtZSI6IlNlbWFoIEtoYXNraG91c3NpIiwiaWF0IjoxNjQwMTcxNjMwfQ.miya_RP9TmZSqBk_pK71XM0_00Dl_Tjy3IonjqQHJj4",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/chargepoints?station=6324fe519f2ad9bcee93c948",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"chargepoints"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "car",
+									"disabled": true
+								},
+								{
+									"key": "station",
+									"value": "6324fe519f2ad9bcee93c948"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new chargepoint",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjUyY2YxY2VlZjY3ZjI3OGIwMDViNiIsInJvbGUiOiJvd25lciIsInVzZXJuYW1lIjoibmtoYXNraG8iLCJpYXQiOjE2NjI4NDg4MTAsImV4cCI6MTY2NTQ0MDgxMH0.sv38KZXHM9mk4-8BhAdpNL6euTOZtezM-Dpho2sgMLA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Micro USB\",\n    \"station\": \"6324fe519f2ad9bcee93c948\",\n    \"type\": \"Type B\",\n    \"volt\": 220,\n    \"category\": \"mobile\",\n    \"price\": 8,\n    \"lng\": 36.845,\n    \"lat\": 10.199\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/chargepoints",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"chargepoints"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get chargepoint by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/chargepoints/6324fea69f2ad9bcee93c94b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"chargepoints",
+								"6324fea69f2ad9bcee93c94b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update chargepoint by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"_id\": \"6324fea69f2ad9bcee93c94b\",\n        \"category\": \"mobile\",\n        \"type\": \"Type B\",\n        \"price\": 8,\n        \"volt\": 220,\n        \"station\": \"6324fe519f2ad9bcee93c948\",\n        \"lng\": 36.845,\n        \"lat\": 10.199,\n        \"__v\": 0\n    }\n\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/chargepoints/62f6f17b769e48657abcf794",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"chargepoints",
+								"62f6f17b769e48657abcf794"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete chargepoint by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"61b0baf9dc2358d11a94c1d1\",\n    \"userName\": \"n.khaskhoussi\",\n    \"fullName\": \"Naiim Khaskhoussi\",\n    \"email\": \"nkh@gmail.com\",\n    \"role\": \"AGENT\",\n    \"password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/chargepoints/6324fea69f2ad9bcee93c94b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"chargepoints",
+								"6324fea69f2ad9bcee93c94b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reviews",
+			"item": [
+				{
+					"name": "Get station's reviews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWMxYzU3YjVlOTU5OWNiY2IxMmE2ZTQiLCJyb2xlIjoiYWRtaW4iLCJmdWxsTmFtZSI6IlNlbWFoIEtoYXNraG91c3NpIiwiaWF0IjoxNjQwMTcxNjMwfQ.miya_RP9TmZSqBk_pK71XM0_00Dl_Tjy3IonjqQHJj4",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/reviews?station=6324f386e7e3f9d32afb7759",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "station",
+									"value": "6324f386e7e3f9d32afb7759"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjUyY2YxY2VlZjY3ZjI3OGIwMDViNiIsInJvbGUiOiJvd25lciIsInVzZXJuYW1lIjoibmtoYXNraG8iLCJpYXQiOjE2NjI4NDg4MTAsImV4cCI6MTY2NTQ0MDgxMH0.sv38KZXHM9mk4-8BhAdpNL6euTOZtezM-Dpho2sgMLA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Good service\",\n    \"description\": \"A review description here\",\n    \"station\": \"6324f386e7e3f9d32afb7759\",\n    \"client\": \"6324f9290b70126159c672b9\",\n    \"note\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update review by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"62f6f17b769e48657abcf794\",\n    \"name\": \"station 1\",\n    \"status\": \"active\",\n    \"createdAt\": \"2022-08-13T00:33:58.179Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/stations/62f6f17b769e48657abcf794",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"stations",
+								"62f6f17b769e48657abcf794"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete review by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"61b0baf9dc2358d11a94c1d1\",\n    \"userName\": \"n.khaskhoussi\",\n    \"fullName\": \"Naiim Khaskhoussi\",\n    \"email\": \"nkh@gmail.com\",\n    \"role\": \"AGENT\",\n    \"password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/reviews/62f8431f86a9a18a2a7f1893",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reviews",
+								"62f8431f86a9a18a2a7f1893"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reservations",
+			"item": [
+				{
+					"name": "Get all reservations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWMxYzU3YjVlOTU5OWNiY2IxMmE2ZTQiLCJyb2xlIjoiYWRtaW4iLCJmdWxsTmFtZSI6IlNlbWFoIEtoYXNraG91c3NpIiwiaWF0IjoxNjQwMTcxNjMwfQ.miya_RP9TmZSqBk_pK71XM0_00Dl_Tjy3IonjqQHJj4",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/reservations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reservations"
+							],
+							"query": [
+								{
+									"key": "governorate",
+									"value": "ben arous",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "khaskhoussi",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new reservation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjRmOTI5MGI3MDEyNjE1OWM2NzJiOSIsInJvbGUiOiJjbGllbnQiLCJ1c2VybmFtZSI6InNraGFza2hvIiwiaWF0IjoxNjYzMzY3NDgyLCJleHAiOjE2NjU5NTk0ODJ9.gyH5qR5OM2DVW2t-Vx1VMqVr9yWNhlvXQ6XboXN822w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"date\": \"2022-09-20T10:00\",\n    \"device\": \"SAMSUNG A7\",\n    \"chargePoint\": \"6324f5c552674ca5cee4f420\",\n    \"client\": \"6324f9290b70126159c672b9\",\n    \"duration\": 60\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/reservations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get reservation by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/reservations/6324f848d97349fb7158cabf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reservations",
+								"6324f848d97349fb7158cabf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update reservation by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"62f6f17b769e48657abcf794\",\n    \"name\": \"station 1\",\n    \"status\": \"active\",\n    \"createdAt\": \"2022-08-13T00:33:58.179Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/reservations/62f6f17b769e48657abcf794",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reservations",
+								"62f6f17b769e48657abcf794"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete reservation by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/reservations/6324f848d97349fb7158cabf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reservations",
+								"6324f848d97349fb7158cabf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "/auth/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"skhaskho\",\n    \"password\": \"pass1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
