@@ -31,14 +31,12 @@ const ReservationSchema = mongoose.Schema({
 
     client: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User', 
-        required: true
+        ref: 'User'
     },
 
     chargePoint:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'ChargePoint', 
-        required: true
+        ref: 'ChargePoint'
     }
 
 })
@@ -53,7 +51,7 @@ const validate = (reservation) => {
         device: Joi.string().required(),
         duration: Joi.number().required(),
         date: Joi.date().required(),
-        client: Joi.objectId().allow(null),
+        client: Joi.objectId().required(),
         chargePoint: Joi.objectId().required()
     });
     return schema.validate(reservation);

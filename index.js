@@ -1,6 +1,7 @@
 
 const express = require('express')
 const cors = require('cors')
+const morgan = require('morgan')
 const connection = require("./config/db")
 const users = require('./routes/users')
 const stations = require('./routes/stations')
@@ -20,6 +21,7 @@ const app = express()
 connection();
 
 app.use(cors())
+app.use(morgan('combined'))
 
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

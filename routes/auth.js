@@ -23,7 +23,10 @@ router.post('/login', (req, res) => {
                     process.env.SECRET,
                     { expiresIn: '30d' }
                 ); 
-                res.status(200).json({token: token})
+                res.status(200).json({
+                    token: token, 
+                    id: users[0]._id
+                })
             }
         } else res.status(400).json({error: "Invalid username or password"})
           
