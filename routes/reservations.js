@@ -7,7 +7,10 @@ const router = express.Router();
 // Get all reservations
 router.get("/reservations", async (req, res) => {
     // #swagger.tags = ['reservations']
-    const reservations = await Reservation.find()
+    let filters = {}
+    if (req.query.client) filters.client = req.query.client
+    if (req.query.status) filters.status = req.query.status 
+    const reservations = await Reservation.find(filters)
     res.send (reservations)
 })
 
@@ -17,7 +20,7 @@ router.post("/reservations", isAuthenticated, async (req, res) => {
     const { err } = validate(req.body)
     if (err) res.send({error: error.errors}); //[0].message
     const reservation = new Reservation(req.body)
-    reservation.client = req.user._id
+    reservation.client = req.user.id
     await reservation.save()
     res.send(reservation)
 })

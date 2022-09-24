@@ -19,6 +19,12 @@ const ReservationSchema = mongoose.Schema({
         default: Date.now()
     },
 
+    status: {
+        type: String,
+        enum: ['ongoing', 'done', 'canceled'],
+        default: 'ongoing'  
+    },
+
     device: {
         type: String,
         required: true
@@ -52,7 +58,8 @@ const validate = (reservation) => {
         duration: Joi.number().required(),
         date: Joi.date().required(),
         client: Joi.objectId().required(),
-        chargePoint: Joi.objectId().required()
+        chargePoint: Joi.objectId().required(),
+        status: Joi.string().required()
     });
     return schema.validate(reservation);
 };
