@@ -42,6 +42,11 @@ const userSchema = mongoose.Schema({
     phone: {
         type: Number,
         required: true
+    },
+
+    image: {
+        type: String,
+        default: null
     }
 
 })
@@ -66,7 +71,8 @@ const validate = (user) => {
         password: Joi.string().allow(''),
         email: Joi.string().email().allow(null).allow(''),
         role: Joi.string().required(),
-        phone: Joi.number().required()
+        phone: Joi.number().required(),
+        image: Joi.string().allow(null).allow('')
     });
     return schema.validate(user);
 };
