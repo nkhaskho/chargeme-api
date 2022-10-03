@@ -7,7 +7,10 @@ const router = express.Router();
 // Get all stations
 router.get("/stations", async (req, res) => {
     // #swagger.tags = ['stations']
-    const stations = await Station.find()
+    let query = {}
+    if (req.query.status) query.status = req.query.status;
+    if (req.query.owner) query.owner = req.query.owner
+    const stations = await Station.find(query)
     res.send(stations)
 })
 

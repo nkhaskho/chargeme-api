@@ -16,7 +16,6 @@ router.get("/users", async (req, res) => {
     let query = {}
     if (req.query.role) query.role = req.query.role;
     if (req.query.search) query.fullName = { $regex: req.query.search, $options: "i" }
-    if (req.query.governorate) query.governorate = req.query.governorate;
 	const users = await User.find(query);
 	res.send(users);
 })
