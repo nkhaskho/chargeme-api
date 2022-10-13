@@ -9,12 +9,12 @@ const chargepointSchema = mongoose.Schema({
     category: {
         type: String,
         enum: ['mobile', 'car', 'laptop'],
-        required: true
+        required: [true, 'category is required']
     },
     
     type: {
         type: String,
-        required: true
+        required: [true, 'type is required']
     },
 
     description: {
@@ -23,12 +23,12 @@ const chargepointSchema = mongoose.Schema({
 
     price: {
         type: Number,
-        required: true
+        required: [true, 'price is required']
     },
 
     volt: {
         type: Number,
-        required: true
+        required: [true, 'type is required']
     },
 
     station: { 
@@ -51,19 +51,5 @@ const chargepointSchema = mongoose.Schema({
 
 const ChargePoint = mongoose.model('ChargePoint', chargepointSchema)
 
-// validaion
-const validate = (chargePoint) => {
-    const schema = Joi.object({
-        category: Joi.string().required(),
-        type: Joi.string().required(),
-        price: Joi.string().required(),
-        volt: Joi.number().required(),
-        station: Joi.objectId().required(),
-        lng: Joi.number().required(),
-        lat: Joi.number().required()
-    });
-    return schema.validate(chargePoint);
-};
 
-
-module.exports = {ChargePoint, validate}
+module.exports = { ChargePoint }

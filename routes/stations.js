@@ -17,13 +17,16 @@ router.get("/stations", async (req, res) => {
 // Add new station
 router.post("/stations", isAuthenticated , async (req, res) => {
     // #swagger.tags = ['stations']
-    const { err } = validate(req.body);
-    console.log(req.user);
-    if (err) res.send({error: error.details[0].message}); //[0].message
-    const station = new Station(req.body)
-    station.owner = req.user.id;
-    await station.save()
-    res.send(station)
+    try {
+        const station = new Station(req.body)
+        const err = await station.validate();
+        if (err) res.status(400).send({error: error.errors}); //[0].message
+        station.owner = req.user.id;
+        await station.save()
+        res.send(station)
+    } catch (error) {
+        res.status(400).send({error: error});
+    }
 })
 
 // Get station by id

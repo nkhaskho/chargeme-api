@@ -17,11 +17,16 @@ router.get("/chargepoints", async (req, res) => {
 // Add new chargepoint
 router.post("/chargepoints", async (req, res) => {
     // #swagger.tags = ['chargepoints']
-    const { err } = validate(req.body)
-    if (err) res.send({error: error.errors}); //[0].message
-    const chargePoint = new ChargePoint(req.body)
-    await chargePoint.save()
-    res.send(chargePoint)
+    try {
+        const chargePoint = new ChargePoint(req.body)
+        let error = await chargePoint.validate();
+        if (error) { res.status(400).send({error: error.errors}); } //[0].message
+        await chargePoint.save()
+        res.send(chargePoint)
+    } catch (error) {
+        res.status(400).send({error: error});
+    }
+    
 })
 
 // Get chargepoint by id
