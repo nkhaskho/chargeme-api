@@ -51,18 +51,4 @@ const ReservationSchema = mongoose.Schema({
 const Reservation = mongoose.model('Reservation', ReservationSchema)
 
 
-//validaion
-const validate = (reservation) => {
-    const schema = Joi.object({
-        device: Joi.string().required(),
-        duration: Joi.number().required(),
-        date: Joi.date().required(),
-        client: Joi.objectId().required(),
-        chargePoint: Joi.objectId().required(),
-        status: Joi.string().required()
-    });
-    return schema.validate(reservation);
-};
-
-
-module.exports = { Reservation, validate }
+module.exports = { Reservation }
