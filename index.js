@@ -7,6 +7,7 @@ const users = require('./routes/users')
 const stations = require('./routes/stations')
 const auth = require('./routes/auth')
 const reviews = require('./routes/reviews')
+const stats = require('./routes/stats')
 const chargepoints = require('./routes/charge-points')
 const reservations = require('./routes/reservations')
 const swaggerUi = require('swagger-ui-express');
@@ -27,10 +28,10 @@ app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(express.json());
 
-app.use("/api", [auth, users, stations,reviews,chargepoints,reservations]);
+app.use("/api", [stats, auth, users, stations, reviews, chargepoints, reservations]);
 
 app.get('/', (req, res) => {
-  res.json({ test: 'Hello Naiim!'})
+  res.json({ test: 'Hello ChargeMe'})
 })
 
 app.listen(process.env.PORT, () => {

@@ -55,13 +55,8 @@
 							],
 							"query": [
 								{
-									"key": "governorate",
-									"value": "ben arous",
-									"disabled": true
-								},
-								{
 									"key": "role",
-									"value": "admin",
+									"value": "owner",
 									"disabled": true
 								},
 								{
@@ -81,7 +76,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"fullName\": \"Salim Khaskho\",\n    \"username\": \"skhaskho\",\n    \"email\": \"skhaskho@gmail.com\",\n    \"role\": \"client\",\n    \"password\": \"pass1234\",\n    \"phone\": 55944780\n}",
+							"raw": "{\n    \"fullName\": \"Hanene Khaskho\",\n    \"username\": \"hkhaskho\",\n    \"email\": \"hkhaskho@gmail.com\",\n    \"role\": \"admin\",\n    \"password\": \"pass1234\",\n    \"phone\": 55944780\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -131,7 +126,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "    {\n        \"_id\": \"62f52cf1ceef67f278b005b6\",\n        \"fullName\": \"Naiim Khaskhoussi\",\n        \"username\": \"nkhaskho\",\n        \"email\": \"nkhaskho@gmail.com\",\n        \"role\": \"owner\",\n        \"joinedAt\": \"2022-08-11T16:23:06.475Z\",\n        \"password\": \"$2b$10$mz5qEGoQsAcD.11DD0Apt.ZXSgIqs4BbHV7TuCBKB1ZugW9.WgxVS\",\n        \"phone\": 55944781,\n        \"__v\": 0\n    }",
+							"raw": " {\n        \"_id\": \"6324f0b40e8733da5f1ad300\",\n        \"fullName\": \"Hanene Lahbib\",\n        \"username\": \"hlahbib\",\n        \"email\": \"hanen.lahbib@hotmail.com\",\n        \"role\": \"owner\",\n        \"joinedAt\": \"2022-09-16T21:53:31.382Z\",\n        \"password\": \"$2b$10$juTl9R9tg/XTBdanelHxx.XnSiKPoipt55VdomdVaX1Lq7V1avkm.\",\n        \"phone\": 12345678,\n        \"__v\": 0,\n        \"image\": null\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -139,7 +134,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/users/62f52cf1ceef67f278b005b6",
+							"raw": "http://localhost:3000/api/users/6324f0b40e8733da5f1ad300",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -148,7 +143,7 @@
 							"path": [
 								"api",
 								"users",
-								"62f52cf1ceef67f278b005b6"
+								"6324f0b40e8733da5f1ad300"
 							]
 						}
 					},
@@ -246,18 +241,13 @@
 							],
 							"query": [
 								{
-									"key": "governorate",
-									"value": "ben arous",
+									"key": "status",
+									"value": "active",
 									"disabled": true
 								},
 								{
-									"key": "role",
-									"value": "admin",
-									"disabled": true
-								},
-								{
-									"key": "search",
-									"value": "khaskhoussi",
+									"key": "owner",
+									"value": "6324f0b40e8733da5f1ad300",
 									"disabled": true
 								}
 							]
@@ -332,7 +322,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_id\": \"62f6f17b769e48657abcf794\",\n    \"name\": \"station 1\",\n    \"status\": \"active\",\n    \"createdAt\": \"2022-08-13T00:33:58.179Z\"\n}",
+							"raw": "{\n        \"_id\": \"6324f386e7e3f9d32afb7759\",\n        \"name\": \"Naiim Charging\",\n        \"status\": \"active\",\n        \"createdAt\": \"2022-09-16T22:02:55.867Z\",\n        \"lng\": 36.87,\n        \"lat\": 10.197,\n        \"owner\": \"6324f9290b70126159c672b9\",\n        \"__v\": 0\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -340,7 +330,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/stations/62f6f17b769e48657abcf794",
+							"raw": "http://localhost:3000/api/stations/633895dd56a0669f2dbf6cbe",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -349,7 +339,7 @@
 							"path": [
 								"api",
 								"stations",
-								"62f6f17b769e48657abcf794"
+								"633895dd56a0669f2dbf6cbe"
 							]
 						}
 					},
@@ -425,7 +415,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/chargepoints?station=6324fe519f2ad9bcee93c948",
+							"raw": "http://localhost:3000/api/chargepoints",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -438,12 +428,13 @@
 							"query": [
 								{
 									"key": "category",
-									"value": "car",
+									"value": "laptop",
 									"disabled": true
 								},
 								{
 									"key": "station",
-									"value": "6324fe519f2ad9bcee93c948"
+									"value": "6324f386e7e3f9d32afb7759",
+									"disabled": true
 								}
 							]
 						}
@@ -467,7 +458,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Micro USB\",\n    \"station\": \"6324fe519f2ad9bcee93c948\",\n    \"type\": \"Type B\",\n    \"volt\": 220,\n    \"category\": \"mobile\",\n    \"price\": 8,\n    \"lng\": 36.845,\n    \"lat\": 10.199\n}",
+							"raw": "{\n    \"name\": \"\",\n    \"station\": \"\",\n    \"type\": \"\",\n    \"volt\": 220,\n    \"category\": \"\",\n    \"price\": 8,\n    \"lng\": null,\n    \"lat\": 10.199\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -495,7 +486,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/chargepoints/6324fea69f2ad9bcee93c94b",
+							"raw": "http://localhost:3000/api/chargepoints/6324f5c552674ca5cee4f420",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -504,7 +495,7 @@
 							"path": [
 								"api",
 								"chargepoints",
-								"6324fea69f2ad9bcee93c94b"
+								"6324f5c552674ca5cee4f420"
 							]
 						}
 					},
@@ -517,7 +508,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"_id\": \"6324fea69f2ad9bcee93c94b\",\n        \"category\": \"mobile\",\n        \"type\": \"Type B\",\n        \"price\": 8,\n        \"volt\": 220,\n        \"station\": \"6324fe519f2ad9bcee93c948\",\n        \"lng\": 36.845,\n        \"lat\": 10.199,\n        \"__v\": 0\n    }\n\n\n",
+							"raw": "{\n        \"_id\": \"6348974857ace8f97109e752\",\n        \"category\": \"laptop\",\n        \"type\": \"1.0\",\n        \"price\": 8,\n        \"volt\": 220,\n        \"station\": \"6324f386e7e3f9d32afb7759\",\n        \"lng\": 36.874904,\n        \"lat\": 10.185214,\n        \"__v\": 0\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -525,7 +516,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/chargepoints/62f6f17b769e48657abcf794",
+							"raw": "http://localhost:3000/api/chargepoints/6348974857ace8f97109e752",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -534,7 +525,7 @@
 							"path": [
 								"api",
 								"chargepoints",
-								"62f6f17b769e48657abcf794"
+								"6348974857ace8f97109e752"
 							]
 						}
 					},
@@ -741,14 +732,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "oauth2",
-							"oauth2": [
-								{
-									"key": "addTokenTo",
-									"value": "header",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [
@@ -769,7 +753,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/reservations",
+							"raw": "http://localhost:3000/api/reservations?status=ongoing",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -781,19 +765,13 @@
 							],
 							"query": [
 								{
-									"key": "governorate",
-									"value": "ben arous",
+									"key": "client",
+									"value": "6324f0b40e8733da5f1ad300",
 									"disabled": true
 								},
 								{
-									"key": "role",
-									"value": "admin",
-									"disabled": true
-								},
-								{
-									"key": "search",
-									"value": "khaskhoussi",
-									"disabled": true
+									"key": "status",
+									"value": "ongoing"
 								}
 							]
 						}
@@ -808,7 +786,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjRmOTI5MGI3MDEyNjE1OWM2NzJiOSIsInJvbGUiOiJjbGllbnQiLCJ1c2VybmFtZSI6InNraGFza2hvIiwiaWF0IjoxNjYzMzY3NDgyLCJleHAiOjE2NjU5NTk0ODJ9.gyH5qR5OM2DVW2t-Vx1VMqVr9yWNhlvXQ6XboXN822w",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjRmOTI5MGI3MDEyNjE1OWM2NzJiOSIsInJvbGUiOiJjbGllbnQiLCJ1c2VybmFtZSI6InNraGFza2hvIiwiaWF0IjoxNjY1OTI2NzEyLCJleHAiOjE2Njg1MTg3MTJ9.5HhDR5UPAyIbVfWvLFusDfytnbAqo5Xw-IhOJ9QPeck",
 									"type": "string"
 								}
 							]
@@ -817,7 +795,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"date\": \"2022-09-20T10:00\",\n    \"device\": \"SAMSUNG A7\",\n    \"chargePoint\": \"6324f5c552674ca5cee4f420\",\n    \"client\": \"6324f9290b70126159c672b9\",\n    \"duration\": 60\n}",
+							"raw": "{\n    \"date\": \"2022-10-20T10:00\",\n    \"device\": \"HP\",\n    \"chargePoint\": \"6338a783c7d9f4da3fc70eb\"\n}\n    ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -845,7 +823,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/reservations/6324f848d97349fb7158cabf",
+							"raw": "http://localhost:3000/api/reservations/632f4cf73dcf64f2af6c5ab5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -854,7 +832,7 @@
 							"path": [
 								"api",
 								"reservations",
-								"6324f848d97349fb7158cabf"
+								"632f4cf73dcf64f2af6c5ab5"
 							]
 						}
 					},
@@ -867,7 +845,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_id\": \"62f6f17b769e48657abcf794\",\n    \"name\": \"station 1\",\n    \"status\": \"active\",\n    \"createdAt\": \"2022-08-13T00:33:58.179Z\"\n}",
+							"raw": "{\n        \"status\": \"done\",\n        \"_id\": \"632f4a10f37d38e8d2936a39\",\n        \"date\": \"2022-09-20T08:00:00.000Z\",\n        \"createdAt\": \"2022-09-24T18:18:46.570Z\",\n        \"device\": \"SAMSUNG A7\",\n        \"duration\": 60,\n        \"client\": \"6324f9290b70126159c672b9\",\n        \"chargePoint\": \"6324f5c552674ca5cee4f420\",\n        \"__v\": 0\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -875,7 +853,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/reservations/62f6f17b769e48657abcf794",
+							"raw": "http://localhost:3000/api/reservations/632f4a10f37d38e8d2936a39",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -884,7 +862,7 @@
 							"path": [
 								"api",
 								"reservations",
-								"62f6f17b769e48657abcf794"
+								"632f4a10f37d38e8d2936a39"
 							]
 						}
 					},
@@ -905,7 +883,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/reservations/6324f848d97349fb7158cabf",
+							"raw": "http://localhost:3000/api/reservations/632f4b2af06d90d424f63b6b",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -914,7 +892,7 @@
 							"path": [
 								"api",
 								"reservations",
-								"6324f848d97349fb7158cabf"
+								"632f4b2af06d90d424f63b6b"
 							]
 						}
 					},
@@ -949,6 +927,53 @@
 							"path": [
 								"api",
 								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stats",
+			"item": [
+				{
+					"name": "Get stations stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/stats/stations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"stats",
+								"stations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get reservations stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/stats/reservations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"stats",
+								"reservations"
 							]
 						}
 					},
