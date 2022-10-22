@@ -5,16 +5,16 @@ const { Reservation } = require("../models/reservation");
 const router = express.Router();
 
 // Get stations stats
-router.get("/stats/stations", isAuthenticated, async (req, res) => {
+router.get("/stats/stations", async (req, res) => {
     // #swagger.tags = ['stats']
     let stats = {
-        total: 0,
         pending: 0,
-        active: 0
+        active: 0,
+        inactive: 0
     }
-    stats.total = await Station.count()
-    stats.active = await Station.count({status: "active"})
     stats.pending = await Station.count({status: "pending"})
+    stats.active = await Station.count({status: "active"})
+    stats.inactive = await Station.count({status: "inactive"})
     res.send(stats)
 })
 
@@ -22,13 +22,13 @@ router.get("/stats/stations", isAuthenticated, async (req, res) => {
 router.get("/stats/reservations", async (req, res) => {
     // #swagger.tags = ['stats']
     let stats = {
-        total: 0,
-        pending: 0,
-        closed: 0
+        ongoing: 0,
+        done: 0,
+        canceled: 0
     }
-    stats.total = await Reservation.count()
-    stats.closed = await Reservation.count({status: "done"})
-    stats.pending = await Reservation.count({status: "ongoing"})
+    stats.ongoing = await Reservation.count({status: "ongoing"})
+    stats.done = await Reservation.count({status: "done"})
+    stats.canceled = await Reservation.count({status: "canceled"})
     res.send(stats)
 })
 
