@@ -21,9 +21,26 @@ router.post("/reservations", isAuthenticated, async (req, res) => {
         const reservation = new Reservation(req.body)
         const err = await  reservation.validate()
         if (err) res.status(400).send({error: error.errors}); //[0].message
-        reservation.client = req.user.id
-        await reservation.save()
-        res.send(reservation)
+        // test if chargepoint already reserved for that date-time
+        let startDateTime = new Date(reservation.date)
+        startDateTime.setMinutes(startDateTime.getMinutes()-30)
+        let endDateTime = new Date(reservation.date)
+        endDateTime.setMinutes(endDateTime.getMinutes()+reservation.duration)
+        const reservations = await Reservation.find({
+            chargePoint: req.body.chargePoint,
+            date: { $gte: startDateTime, $lte: endDateTime }
+        })
+        // if chargepoint already reserved
+        if (reservations.length>0) {
+            res.status(400).send({
+                error: "ChargePoint already reserved for that date-time"
+            });
+        } else {
+            reservation.client = req.user.id
+            await reservation.save()
+            res.send(reservation)
+        }
+        
     } catch (error) {
         res.status(400).send({error: error});
     }
